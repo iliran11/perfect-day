@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const config = require("../../config.next");
+const config = require("../../next.config");
 const MongoClient = require("mongodb").MongoClient;
 
 const client = new MongoClient(config.db.mongoUri, { useNewUrlParser: true });
