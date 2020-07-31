@@ -13,11 +13,10 @@ const connect = () =>
     });
   });
 
-const insertNewItem = async () => {
+const insertNewItem = async (day) => {
   const client = await connect();
   const collection = client.db("perfect-days").collection("days");
-  return collection.insertOne({
-    hello: "liran",
-  });
+  const result = await collection.insertOne(day);
+  return result;
 };
 module.exports = { insertNewItem };

@@ -1,8 +1,13 @@
 const { insertNewItem } = require("./database");
+const { v4: uuidv4 } = require("uuid");
 
 const www = (server) => {
   server.post("/day", async (req, res) => {
-    await insertNewItem();
+    const id = uuidv4();
+    await insertNewItem({
+      id,
+      day: req.body.day,
+    });
     const result = {
       hello: "world",
     };
