@@ -1,9 +1,14 @@
 import { useRouter } from "next/router";
 
-const Day = () => {
+const Day = (props) => {
   const router = useRouter();
   const { dayId } = router.query;
-  return <div>day: {dayId}</div>;
+  return (
+    <>
+      <div>day: {dayId}</div>
+      <div> build time: {props.date}</div>
+    </>
+  );
 };
 
 export default Day;
