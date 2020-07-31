@@ -1,6 +1,6 @@
 const express = require("express");
 const next = require("next");
-
+const customRoutes = require("./customRoutes");
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -8,15 +8,7 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = express();
-
-  server.get("/a", (req, res) => {
-    return res.send({ hi: 3 });
-  });
-
-  server.get("/b", (req, res) => {
-    return app.render(req, res, "/b", req.query);
-  });
-
+  customRoutes(server);
   server.all("*", (req, res) => {
     return handle(req, res);
   });
