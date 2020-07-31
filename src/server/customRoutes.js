@@ -1,13 +1,11 @@
-const database = require("./database");
-const { response } = require("express");
+const { insertNewItem } = require("./database");
 
 const www = (server) => {
   server.post("/day", async (req, res) => {
-    const collection = await database.getDaysCollection();
-    const result = collection.insert({
+    await insertNewItem();
+    const result = {
       hello: "world",
-    });
-    console.log(result);
+    };
     res.json(result);
   });
   server.get("/day", async (req, res) => {

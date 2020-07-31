@@ -1,5 +1,5 @@
 {
   "watch": ["src/server"],
-  "exec": "node src/server/server.js",
+  "exec": "node -r dotenv/config src/server/server.js",
   "ext": "js"
 }
