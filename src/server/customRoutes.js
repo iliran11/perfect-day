@@ -17,6 +17,14 @@ const www = (server) => {
       res.send(404);
     }
   });
+  server.get("/api/days", async (req, res, next) => {
+    try {
+      const result = await database.getDaysList();
+      res.json(result);
+    } catch (e) {
+      next(e);
+    }
+  });
 };
 
 module.exports = www;

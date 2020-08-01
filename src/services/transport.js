@@ -13,11 +13,22 @@ export const sendDay = async (day) =>
     data: {
       day,
     },
-    url: `/day`,
+    url: "/day",
   });
 
 export const getDayById = async (id) =>
-  api({
-    method: "get",
-    url: `/api/day/${id}`,
-  });
+  (
+    await api({
+      method: "get",
+      url: `/api/day/${id}`,
+    })
+  ).data;
+
+export const getDaysList = async () => {
+  return (
+    await api({
+      method: "get",
+      url: "/api/days",
+    })
+  ).data;
+};
