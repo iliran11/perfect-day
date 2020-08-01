@@ -9,8 +9,13 @@ const www = (server) => {
     res.json(result);
   });
   server.get("/api/day/:dayId", async (req, res) => {
-    const result = await database.getSingleDaybyId(req.params.dayId);
-    res.json(result);
+    try {
+      const result = await database.getSingleDaybyId(req.params.dayId);
+      res.json(result);
+    } catch (e) {
+      console.log(e);
+      res.send(404);
+    }
   });
 };
 
