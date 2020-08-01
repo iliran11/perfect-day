@@ -3,17 +3,21 @@ import getConfig from "next/config";
 
 const { publicRuntimeConfig } = getConfig();
 
+let api = axios.create({
+  baseURL: publicRuntimeConfig.serverUrl,
+});
+
 export const sendDay = async (day) =>
-  axios({
+  api({
     method: "post",
     data: {
       day,
     },
-    url: `${publicRuntimeConfig.serverUrl}/day`,
+    url: `/day`,
   });
 
 export const getDayById = async (id) =>
-  axios({
+  api({
     method: "get",
-    url: `${publicRuntimeConfig.serverUrl}/api/day/${id}`,
+    url: `/api/day/${id}`,
   });

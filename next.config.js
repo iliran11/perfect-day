@@ -6,6 +6,6 @@ module.exports = {
   },
   publicRuntimeConfig: {
     // Will be available on both server and client
-    serverUrl: process.env.SERVER_URL || "http://localhost:3000",
+    serverUrl: process.env.SERVER_URL || "http://localhost:3000/",
   },
 };
