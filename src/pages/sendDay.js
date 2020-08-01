@@ -19,7 +19,7 @@ export default function Home() {
             <div>
               <input
                 onChange={(event) => {
-                  inputs[index].activity = event.target.value;
+                  inputs[index].text = event.target.value;
                 }}
               />
             </div>

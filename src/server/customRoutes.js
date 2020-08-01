@@ -1,11 +1,12 @@
-const database = require("./database");
+const database = require("./services/database");
+const images = require("./services/images");
+const baseUrl = `http://localhost:3000`;
 
 const www = (server) => {
   server.post("/day", async (req, res) => {
-    await database.insertNewItem(req.body.day);
-    const result = {
-      hello: "world",
-    };
+    const result = await database.insertNewItem(req.body.day);
+    const id = result.insertedId.toString();
+    await images.perfectDayToImage(`${baseUrl}/day/${id}`, id);
     res.json(result);
   });
   server.get("/api/day/:dayId", async (req, res) => {
