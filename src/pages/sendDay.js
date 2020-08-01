@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <input onChange={(event) => setValue(event.target.value)} />
-      <button onClick={() => sendDay(value)}>Send day</button>
+      <button onClick={() => sendDay({ activities: [value] })}>Send day</button>
     </>
   );
 }

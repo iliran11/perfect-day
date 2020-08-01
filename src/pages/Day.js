@@ -5,8 +5,9 @@ const Day = (props) => {
   const { dayId } = router.query;
   return (
     <>
-      <div>day: {dayId}</div>
+      <div>dayId: {dayId}</div>
       <div> build time: {props.date}</div>
+      <div> Day: {props.day.activities[0]}</div>
     </>
   );
 };

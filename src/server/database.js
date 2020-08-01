@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
 const config = require("../../next.config");
+const { ObjectId } = require("mongodb");
 const MongoClient = require("mongodb").MongoClient;
 
 const client = new MongoClient(config.db.mongoUri, { useNewUrlParser: true });
@@ -17,6 +17,16 @@ const insertNewItem = async (day) => {
   const client = await connect();
   const collection = client.db("perfect-days").collection("days");
   const result = await collection.insertOne(day);
+  client.close();
   return result;
 };
-module.exports = { insertNewItem };
+
+const getSingleDaybyId = async (dayId) => {
+  const client = await connect();
+  const collection = client.db("perfect-days").collection("days");
+  const result = await (
+    await collection.find({ _id: ObjectId(dayId) })
+  ).toArray();
+  return result[0];
+};
+module.exports = { insertNewItem, getSingleDaybyId };
