@@ -10,6 +10,13 @@ const Day = (props) => {
       {props.day.activities.map((entry) => (
         <div>{entry.text}</div>
       ))}
+
+      <img src={`/images/perfect-day-${dayId}.png`} />
+      <style jsx>{`
+        img {
+          border: 1px solid red;
+        }
+      `}</style>
     </div>
   );
 };
