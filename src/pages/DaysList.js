@@ -1,7 +1,6 @@
 import Link from "../components/Link";
 
 const DaysList = (props) => {
-  console.log(props.daysList);
   return (
     <div>
       {props.daysList.map((day) => {
