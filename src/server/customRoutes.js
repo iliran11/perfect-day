@@ -1,12 +1,17 @@
 const database = require("./services/database");
 const images = require("./services/images");
+const storage = require("./services/storage/storage");
 const baseUrl = `http://localhost:3000`;
 
 const www = (server) => {
   server.post("/day", async (req, res) => {
     const result = await database.insertNewItem(req.body.day);
     const id = result.insertedId.toString();
-    await images.perfectDayToImage(`${baseUrl}/day/${id}`, id);
+    const imageBase64 = await images.perfectDayToImage(
+      `${baseUrl}/day/${id}`,
+      id
+    );
+    storage.uploadFile(`perfect-day-${id}.png`,imageBase64);
     res.json(result);
   });
   server.get("/api/day/:dayId", async (req, res) => {

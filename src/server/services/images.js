@@ -5,9 +5,7 @@ const perfectDayToImage = async (url, filename) => {
   const page = await browser.newPage();
   await page.goto(url);
   const perfectDayElement = await page.$("#perfect-day");
-  console.log(perfectDayElement);
-  await perfectDayElement.screenshot({ path: `${filename}.png` });
-  return;
+  return perfectDayElement.screenshot();
 };
 
 module.exports = {

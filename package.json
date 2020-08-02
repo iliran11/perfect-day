@@ -2,11 +2,13 @@
   "name": "custom-server-express",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon",
+    "dev": "yarn google && nodemon",
+    "google": "GOOGLE_APPLICATION_CREDENTIALS=/Users/lirancohen/Projects/liran/personal/perfect-day/src/server/services/storage/key.json",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node src/server/server.js"
   },
   "dependencies": {
+    "@google-cloud/storage": "^5.1.2",
     "axios": "^0.19.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
