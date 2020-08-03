@@ -2,8 +2,7 @@
   "name": "custom-server-express",
   "version": "1.0.0",
   "scripts": {
-    "dev": "yarn google && nodemon",
-    "google": "GOOGLE_APPLICATION_CREDENTIALS=/Users/lirancohen/Projects/liran/personal/perfect-day/src/server/services/storage/key.json",
+    "dev": "nodemon",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node src/server/server.js"
   },
@@ -14,6 +13,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.5",
+    "joi": "^17.1.1",
     "mongodb": "^3.6.0",
     "mongoose": "^5.9.26",
     "next": "latest",

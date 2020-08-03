@@ -13,7 +13,7 @@ export const sendDay = async (day) =>
     data: {
       day,
     },
-    url: "/day",
+    url: "api/day",
   });
 
 export const getDayById = async (id) =>

@@ -3,8 +3,13 @@ const images = require("./services/images");
 const storage = require("./services/storage/storage");
 const baseUrl = `http://localhost:3000`;
 const router = require("express").Router();
+const validate = require("./services/validation/schemas");
 
-router.post("/day", async (req, res) => {
+router.post("/api/day", async (req, res) => {
+  const validation = validate.day(req.body.day);
+  if (validation.error) {
+    res.status(400).send(validation);
+  }
   const result = await database.insertNewItem(req.body.day);
   const id = result.insertedId.toString();
   const imageBase64 = await images.perfectDayToImage(
