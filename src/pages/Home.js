@@ -15,7 +15,7 @@ const Home = () => {
         >
           {images.map((image) => {
             return (
-              <Carousel.Item>
+              <Carousel.Item key="image">
                 <div
                   className="cover-image"
                   style={{ backgroundImage: `url(/${image}.jpg)` }}
