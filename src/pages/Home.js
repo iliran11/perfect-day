@@ -1,5 +1,6 @@
 import Carousel from "react-bootstrap/Carousel";
-const images = ["dine", "paint", "sleep", "study", "surf"];
+const images = ["surf"];
+
 // https://stackoverflow.com/questions/47955102/how-to-create-a-slanted-background-with-css
 const Home = () => {
   return (
@@ -15,27 +16,29 @@ const Home = () => {
           {images.map((image) => {
             return (
               <Carousel.Item>
-                <img src={`${image}.jpg`} />
+                <div
+                  className="cover-image"
+                  style={{ backgroundImage: `url(/${image}.jpg)` }}
+                />
               </Carousel.Item>
             );
           })}
         </Carousel>
       </div>
-      <div id="controls">hi</div>
       <style jsx>{`
-        #carousel {
-          width: 70%;
-        }
-        #controls {
-          width: 30%;
-          background-color: red;
-        }
-        img {
-          width: 100%;
-          object-fit: cover;
-        }
         #hero {
           display: flex;
+
+          overflow: hidden;
+        }
+        #carousel {
+          width: 100%;
+        }
+        .cover-image {
+          width: 100%;
+          height: 500px;
+          background-size: cover;
+          background-position: center;
         }
       `}</style>
     </div>
